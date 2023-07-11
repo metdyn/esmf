@@ -4457,6 +4457,8 @@ type(ESMF_KeywordEnforcer), optional:: keywordEnforcer ! must use keywords below
 ! Initialize return code; assume failure until success is certain
       if (present(rc)) rc = ESMF_RC_NOT_IMPL
 
+      write(6,*) 'ck: petlist=', petlist
+      
       ! Check Variables
       ESMF_INIT_CHECK_DEEP(ESMF_LocStreamGetInit,locstream,rc)
 
@@ -4667,6 +4669,11 @@ type(ESMF_KeywordEnforcer), optional:: keywordEnforcer ! must use keywords below
      if (ESMF_LogFoundError(localrc, ESMF_ERR_PASSTHRU, & 
             ESMF_CONTEXT, rcToReturn=rc)) return
 
+     ! ygyu add
+     write(6,*) 'nail 1'
+     write(6,*) 'newCount=', newCount
+     write(6,*) 'rcvSeqInd'
+     write(6,*) rcvSeqInd     
 
      ! Deallocate sndSeqInd
      deallocate(rcvSeqInd)
